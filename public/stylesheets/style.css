@@ -6,7 +6,7 @@ body {
     	}	
 
 .clock { 	
-    background: white url(ios_clock.svg) no-repeat center;
+    background: white url(Ios_clock.svg) no-repeat center;
     background-size: 90%; 		
     border-radius: 50%/50%;
  		width: 480px;
