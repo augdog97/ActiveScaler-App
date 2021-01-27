@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3000
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -22,7 +21,10 @@ app.use('/', CaliforniaRouter);
 
 app.use(bodyParser.json());
 
-process.env.TZ = 'America/Chicago';
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
