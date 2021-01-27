@@ -6,14 +6,14 @@ body {
     	}	
 
 .clock { 	
-        background: white url(ios_clock.svg) no-repeat center;
-        background-size: 90%; 		
-        border-radius: 50%/50%;
+    background: white url(ios_clock.svg) no-repeat center;
+    background-size: 90%; 		
+    border-radius: 50%/50%;
  		width: 480px;
  		height: 480px;
-        position: relative;
-        left: 30%;
-        top: 80px; 
+    position: relative;
+    left: 30%;
+    top: 80px; 
      }
 .clock .hours {
   background: black;
@@ -48,4 +48,12 @@ body {
   width: 1%;
   transform: rotateZ(180deg);
   z-index: 3;
+}
+
+p {
+  color: white;
+  position: relative;
+  top: 110%;
+  left: 100px;
+  zoom: 2;
 }

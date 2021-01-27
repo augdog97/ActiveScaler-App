@@ -6,19 +6,26 @@ const minuteHand = document.querySelector('#minute');
 const secondHand = document.querySelector('#second');
 
 function startClock() {
-    // Creating Date object and getting the current time
-    const date = new Date();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
+    // Using MomentJs and MomentTimeZone to get the current hour, minute, second in la
+    var loHr = moment.tz('Europe/London').hour();
+    var loMin = moment.tz('Europe/London').minute();
+    var loSec = moment.tz('Europe/London').second();
+
+    // Logging the Current time out
+    console.log(loHr + ":" + loMin + ":" + loSec);
+    
+    
 
     // Hand Position Formulas
+
     // hr = the current hour * degrees in a cirlce/hours on the clock  + currnet minute * degrees in a cirlce/minutes in an hour / 12
     // min = current minute * degrees in a cirlce/ minutes in an hour  + current second * 360 / seconds in a minute / 60
     // sec = current second * degrees in a cirlce/ seconds in a minute
-    let hrPosition = hour * 360 / 12 + ((minute * 360 / 60) / 12);
-    let minPosition = (minute * 360 / 60) + (second * 360 / 60) / 60;
-    let secPosition = second * 360 / 60;
+
+    let hrPosition = loHr * 360 / 12 + ((loMin * 360 / 60) / 12);
+    let minPosition = (loMin * 360 / 60) + (loSec * 360 / 60) / 60;
+    let secPosition = loSec * 360 / 60;
+
     // Logging the result of the hand positions
     console.log(hrPosition, minPosition, secPosition);
 

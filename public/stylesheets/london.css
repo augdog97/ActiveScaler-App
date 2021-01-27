@@ -49,3 +49,11 @@ body {
   transform: rotateZ(180deg);
   z-index: 3;
 }
+
+p {
+  color: white;
+  position: relative;
+  top: 110%;
+  left: 90px;
+  zoom: 2;
+}

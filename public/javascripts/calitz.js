@@ -1,4 +1,4 @@
-// For using other clocks try using getTimezoneoffset()
+
 
 // Clock constants using DOM querySelector by the ID
 const hourHand = document.querySelector('#hour');
@@ -6,20 +6,26 @@ const minuteHand = document.querySelector('#minute');
 const secondHand = document.querySelector('#second');
 
 function startClock() {
-    // Creating Date object and getting the current time
-    const date = new Date();
-    localOffset = date.getTimezoneOffset() * 60000;
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
+    // Using MomentJs and MomentTimeZone to get the current hour, minute, second in la
+    var laHr = moment.tz('America/Los_Angeles').hour();
+    var laMin = moment.tz('America/Los_Angeles').minute();
+    var laSec = moment.tz('America/Los_Angeles').second();
+
+    // Logging the Current time out
+    console.log(laHr+":"+ laMin+":"+ laSec);
+
+  
 
     // Hand Position Formulas
+
     // hr = the current hour * degrees in a cirlce/hours on the clock  + currnet minute * degrees in a cirlce/minutes in an hour / 12
     // min = current minute * degrees in a cirlce/ minutes in an hour  + current second * 360 / seconds in a minute / 60
     // sec = current second * degrees in a cirlce/ seconds in a minute
-    let hrPosition = hour * 360 / 12 + ((minute * 360 / 60) / 12);
-    let minPosition = (minute * 360 / 60) + (second * 360 / 60) / 60;
-    let secPosition = second * 360 / 60;
+
+    let hrPosition = laHr * 360 / 12 + ((laMin * 360 / 60) / 12);
+    let minPosition = (laMin * 360 / 60) + (laSec * 360 / 60) / 60;
+    let secPosition = laSec * 360 / 60;
+
     // Logging the result of the hand positions
     console.log(hrPosition, minPosition, secPosition);
 

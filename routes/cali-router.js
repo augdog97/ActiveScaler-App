@@ -5,7 +5,7 @@ var path = require('path');
 
 /* GET home page. */
 router.get('/california', function (req, res, next) {
-    res.render('cali');
+    res.render('california');
 })
 
 

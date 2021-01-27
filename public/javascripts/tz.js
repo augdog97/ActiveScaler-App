@@ -12,6 +12,7 @@ const secondHand = document.querySelector('#second');
      const minute = date.getMinutes();
      const second = date.getSeconds();
 
+
      // Hand Position Formulas
      // hr = the current hour * degrees in a cirlce/hours on the clock  + currnet minute * degrees in a cirlce/minutes in an hour / 12
      // min = current minute * degrees in a cirlce/ minutes in an hour  + current second * 360 / seconds in a minute / 60
@@ -27,6 +28,7 @@ const secondHand = document.querySelector('#second');
      minuteHand.style.transform = "rotate(" + minPosition + "deg)"
      secondHand.style.transform = "rotate(" + secPosition + "deg)"
 
+
 }
 
 // When the page loads run the startClock() function every second
@@ -36,3 +38,4 @@ window.onload = function () {
     }, 1000);
 };
 console.log('The current time is', hour, minute, second);
+
