@@ -86,8 +86,10 @@ const minuteHandC = document.querySelector('#minuteC');
 const secondHandC = document.querySelector('#secondC');
 
 function startClockC() {
+
+    //  var laHr = moment().add(2, 'hours').tz('America/Los_Angeles').hour(); adds the correct time
     // Using MomentJs and MomentTimeZone to get the current hour, minute, second in la
-    var laHr = moment.tz('America/Los_Angeles').hours(2);
+    var laHr = moment.tz('America/Los_Angeles').hour();
     var laMin = moment.tz('America/Los_Angeles').minute();
     var laSec = moment.tz('America/Los_Angeles').second();
 
@@ -252,6 +254,7 @@ $(document).ready(function () {
         } else {
             consol.log("Something went wrong");
         }
+        // Local New Time
         // Clock constants using DOM querySelector by the ID
         const hourHandN = document.querySelector('#hour');
         const minuteHandN = document.querySelector('#minute');
@@ -283,6 +286,78 @@ $(document).ready(function () {
         hourHandN.style.transform = `rotate(${hrPositionN}deg)`;
         minuteHandN.style.transform = `rotate(${minPositionN}deg)`;
         secondHandN.style.transform = `rotate(${secPositionN}deg)`;
+
+
+        // CALIFORNIA NEW TIME
+
+        // Clock constants using DOM querySelector by the ID
+        const hourHandCN = document.querySelector('#hourC');
+        const minuteHandCN = document.querySelector('#minuteC');
+        const secondHandCN = document.querySelector('#secondC');
+        // adds the correct time
+        // Using MomentJs and MomentTimeZone to get the current hour, minute, second in la
+        var laHrN   = moment().add(interval, 'hours').tz('America/Los_Angeles').hour();
+        var laMinN  = moment.tz('America/Los_Angeles').minute();
+        var laSecN  = moment.tz('America/Los_Angeles').second();
+
+
+
+
+
+        // Hand Position Formulas
+
+        // hr = the current hour * degrees in a cirlce/hours on the clock  + currnet minute * degrees in a cirlce/minutes in an hour / 12
+        // min = current minute * degrees in a cirlce/ minutes in an hour  + current second * 360 / seconds in a minute / 60
+        // sec = current second * degrees in a cirlce/ seconds in a minute
+
+        let hrPositionCN    = laHrN * 360 / 12 + ((laMinN * 360 / 60) / 12);
+        let minPositionCN   = (laMinN * 360 / 60) + (laSecN * 360 / 60) / 60;
+        let secPositionCN   = laSecN * 360 / 60;
+
+
+
+        // Applying the results from the above equation to the clock to show the correct hands position
+        hourHandCN.style.transform = `rotate(${hrPositionCN}deg)`;
+        minuteHandCN.style.transform = `rotate(${minPositionCN}deg)`;
+        secondHandCN.style.transform = `rotate(${secPositionCN}deg)`;
+
+
+
+        // LONDON NEW TIME
+
+
+        // Clock constants using DOM querySelector by the ID
+        const hourHandLN = document.querySelector('#hourL');
+        const minuteHandLN = document.querySelector('#minuteL');
+        const secondHandLN = document.querySelector('#secondL');
+        
+        // Using MomentJs and MomentTimeZone to get the current hour, minute, second in la
+        var loHrN = moment().add(interval, 'hours').tz('Euripe/London').hour();
+        var loMinN = moment.tz('Europe/London').minute();
+        var loSecN = moment.tz('Europe/London').second();
+
+
+
+
+
+        // Hand Position Formulas
+
+        // hr = the current hour * degrees in a cirlce/hours on the clock  + currnet minute * degrees in a cirlce/minutes in an hour / 12
+        // min = current minute * degrees in a cirlce/ minutes in an hour  + current second * 360 / seconds in a minute / 60
+        // sec = current second * degrees in a cirlce/ seconds in a minute
+
+        let hrPositionLN = loHrN * 360 / 12 + ((loMinN * 360 / 60) / 12);
+        let minPositionLN = (loMinN * 360 / 60) + (loSecN * 360 / 60) / 60;
+        let secPositionLN = loSecN * 360 / 60;
+
+
+
+        // Applying the results from the above equation to the clock to show the correct hands position
+        hourHandLN.style.transform = `rotate(${hrPositionLN}deg)`;
+        minuteHandLN.style.transform = `rotate(${minPositionLN}deg)`;
+        secondHandLN.style.transform = `rotate(${secPositionLN}deg)`;
+
+
 
         currentSetInterval = setInterval(function (intervalInput) {
             console.log(intervalInput)
