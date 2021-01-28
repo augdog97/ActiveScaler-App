@@ -14,6 +14,8 @@ const secondHand = document.querySelector('#second');
      const hour = date.getHours();
      const minute = date.getMinutes();
      const second = date.getSeconds();
+    
+   
 
      // Hand Position Formulas
      // hr = the current hour * degrees in a cirlce/hours on the clock  + currnet minute * degrees in a cirlce/minutes in an hour / 12
@@ -23,8 +25,7 @@ const secondHand = document.querySelector('#second');
      var minPosition = (minute * 360 / 60) + (second * 360 / 60) / 60;
      var secPosition = second * 360 / 60;
 
-     // Logging the result of the hand positions
-     console.log(hrPosition, minPosition, secPosition);
+  
 
      // Applying the results from the above equation to the clock to show the correct hands position
      hourHand.style.transform = `rotate(${hrPosition}deg)`;
@@ -86,12 +87,11 @@ const secondHandC = document.querySelector('#secondC');
 
 function startClockC() {
     // Using MomentJs and MomentTimeZone to get the current hour, minute, second in la
-    var laHr = moment.tz('America/Los_Angeles').hour();
+    var laHr = moment.tz('America/Los_Angeles').hours(2);
     var laMin = moment.tz('America/Los_Angeles').minute();
     var laSec = moment.tz('America/Los_Angeles').second();
 
-    // Logging the Current time out
-    console.log(laHr + ":" + laMin + ":" + laSec);
+
 
 
 
@@ -105,8 +105,7 @@ function startClockC() {
     let minPositionC = (laMin * 360 / 60) + (laSec * 360 / 60) / 60;
     let secPositionC = laSec * 360 / 60;
 
-    // Logging the result of the hand positions
-    console.log(hrPositionC, minPositionC, secPositionC);
+
 
     // Applying the results from the above equation to the clock to show the correct hands position
     hourHandC.style.transform = `rotate(${hrPositionC}deg)`;
@@ -172,8 +171,7 @@ function startClockL() {
     var loMin = moment.tz('Europe/London').minute();
     var loSec = moment.tz('Europe/London').second();
 
-    // Logging the Current time out
-    console.log(loHr + ":" + loMin + ":" + loSec);
+ 
 
 
 
@@ -187,8 +185,7 @@ function startClockL() {
     let minPositionL = (loMin * 360 / 60) + (loSec * 360 / 60) / 60;
     let secPositionL = loSec * 360 / 60;
 
-    // Logging the result of the hand positions
-    console.log(hrPositionL, minPositionL, secPositionL);
+   
 
     // Applying the results from the above equation to the clock to show the correct hands position
     hourHandL.style.transform = `rotate(${hrPositionL}deg)`;
@@ -238,12 +235,61 @@ if (lHr >= 12) {
     console.log("This is not a valid date");
 }
 
-// When the page loads run the startClock() function every second
-window.onload = function () {
-    setInterval(function () {
+
+
+
+$(document).ready(function () {
+    var currentSetInterval = null;
+     currentSetInterval = setInterval(function () {
         startClock();
         startClockC();
         startClockL();
     }, 1000);
-};
-console.log('The current time is', hour, minute, second);
+
+    $('#addTime').on('click', function () {
+        if (currentSetInterval) {
+            clearInterval(currentSetInterval);
+        } else {
+            consol.log("Something went wrong");
+        }
+        // Clock constants using DOM querySelector by the ID
+        const hourHandN = document.querySelector('#hour');
+        const minuteHandN = document.querySelector('#minute');
+        const secondHandN = document.querySelector('#second');
+        
+        const intervalInput = $('#input').val();
+        var interval = intervalInput;
+
+        const dateN = new Date();
+        var milliAdd = interval * 60 * 60 * 1000;
+        dateN.setHours(interval);
+        const hourN = dateN.getHours();
+        const minuteN = dateN.getMinutes();
+        const secondN = dateN.getSeconds();
+
+        console.log(hourN, minuteN, secondN);
+
+        // Hand Position Formulas
+        // hr = the current hour * degrees in a cirlce/hours on the clock  + currnet minute * degrees in a cirlce/minutes in an hour / 12
+        // min = current minute * degrees in a cirlce/ minutes in an hour  + current second * 360 / seconds in a minute / 60
+        // sec = current second * degrees in a cirlce/ seconds in a minute
+        var hrPositionN = hourN * 360 / 12 + ((minuteN * 360 / 60) / 12);
+        var minPositionN = (minuteN * 360 / 60) + (secondN * 360 / 60) / 60;
+        var secPositionN = secondN * 360 / 60;
+
+    
+
+        // Applying the results from the above equation to the clock to show the correct hands position
+        hourHandN.style.transform = `rotate(${hrPositionN}deg)`;
+        minuteHandN.style.transform = `rotate(${minPositionN}deg)`;
+        secondHandN.style.transform = `rotate(${secPositionN}deg)`;
+
+        currentSetInterval = setInterval(function (intervalInput) {
+            console.log(intervalInput)
+            startClock(intervalInput);
+            startClockC(intervalInput);
+            startClockL(intervalInput);
+        }, 1000);
+
+    })
+});
