@@ -18,19 +18,6 @@
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/london">London</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/california" tabindex="-1" aria-disabled="true">California</a>
-                    </li>
-                </ul>
-            </div>
         </nav>
     </header>
 
@@ -41,7 +28,19 @@
     <p class="local"> Local</p>
     </article>
 
+    <article class="clock" id="california">
+        <div class="hours" id="hourC"></div>
+        <div class="minutes" id="minuteC"></div>
+        <div class="seconds" id="secondC"></div>
+        <p class="california"> California</p>
+    </article>
       
+        <article class="clock" id="london">
+            <div class="hours" id="hourL"></div>
+            <div class="minutes" id="minuteL"></div>
+            <div class="seconds" id="secondL"></div>
+            <p class="london">London</p>
+        </article>
              
     
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

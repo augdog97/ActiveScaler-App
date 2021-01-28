@@ -11,9 +11,7 @@ body {
     border-radius: 50%/50%;
  		width: 480px;
  		height: 480px;
-    position: relative;
-    left: 30%;
-    top: 80px; 
+    zoom: .6;
      }
 .clock .hours {
   background: black;
@@ -56,4 +54,53 @@ p {
   top: 110%;
   left: 100px;
   zoom: 2;
+}
+
+
+/* Making the time text smaller*/
+.current, .currentPA, .currentLP {
+  zoom: .8;
+}
+
+
+
+
+
+/* Position of the individual clocks*/
+#local {
+   position: relative;
+    left: 10%;
+    top: 200px; 
+}
+
+#california {
+   position: relative;
+    left: 35%;
+    bottom: 300px; 
+}
+#london {
+  position: relative;
+  bottom: 790px;
+  left: 60%;
+}
+
+
+/* Positioning of the time text */
+.currentD {
+  position: relative;
+  right: 125px;
+  top: 20px;
+}
+
+
+.currentDI {
+  position: relative;
+  right: 125px;
+  top: 20px;
+}
+
+.currentLD {
+  position: relative;
+  right: 125px;
+  top: 20px;
 }

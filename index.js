@@ -5,8 +5,7 @@ require('dotenv').config();
 
 
 const indexRouter = require('./routes/index-router');
-const londonRouter = require('./routes/london-router');
-const CaliforniaRouter = require('./routes/cali-router')
+
 
 app.use(express.static('public'));
 /* View Engine */
@@ -15,8 +14,7 @@ app.set('view engine', 'ejs');
 
 
 app.use('/', indexRouter);
-app.use('/', londonRouter);
-app.use('/', CaliforniaRouter);
+
 
 
 app.use(bodyParser.json());
