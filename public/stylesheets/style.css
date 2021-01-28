@@ -4,7 +4,7 @@ body {
         font-family: "Open Sans", sans-serif;
         background-color: black; 
     	}	
-
+/* The clock it self is an svg and the hands are drawn*/
 .clock { 	
     background: white url(Ios_clock.svg) no-repeat center;
     background-size: 90%; 		
